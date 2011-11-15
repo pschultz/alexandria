@@ -1,0 +1,21 @@
+fieldset.video.symlinks
+  legend symbolic links
+
+  .clearfix
+    input.checkAll(type="checkbox",checked="checked")
+    label: em select all/none
+  
+  - var fieldsets = [ { legend:'Actors', key:'cast' }, { legend:'Director', key:'director' }, { legend:'Credited Company', key:'company' }, { legend:'Year', key:'year' }, { legend:'IMDB Rating', key:'rating' }, ];
+
+  - each fs in fieldsets
+    - var k = fs.key;
+    - if (data[k].length)
+      fieldset(class=k)
+        - var l = fs.legend;
+        legend= l
+        - if (data[k].length > 1)
+          input.checkAll(type="checkbox",checked="checked")
+          label: em select all/none
+        - each link in data[k]
+          input(type="checkbox",name="ln["+k+"]["+link+"]",checked="checked")
+          label= link

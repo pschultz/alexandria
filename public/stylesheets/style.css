@@ -1,0 +1,70 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+a[target="_blank"] {
+  border-bottom: 1px dotted #00B7FF;
+  text-decoration: none;
+}
+label, input {
+  display: block;
+  float: left;
+}
+label + input[type="radio"], label + input[type="checkbox"] {
+  clear: left;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix::before, .clearfix::after {
+  content: ' ';
+  display: block;
+  height: 0px;
+  visibility: hidden;
+}
+.clearfix::after {
+  clear: both;
+}
+#fs-tree {
+  max-height: 900px;
+  overflow: auto;
+}
+#fs-tree, form {
+  float: left;
+  margin-left: 20px;
+  max-width: 50%;
+}
+fieldset {
+  margin-bottom: 1em;
+}
+legend {
+  text-transform: capitalize;
+}
+fieldset p.hint {
+  clear: both;
+  font-size: 80%;
+}
+fieldset.imdb h1 {
+  float: left;
+  font-size: 1.2em;
+  vertical-align: bottom;
+  padding-top: .25em;
+  margin: 0 0 0 1em;
+}
+fieldset.imdb #spinner {
+  display: block;
+  float: left;
+  margin-top: 5px;
+}
+#imdb-actions {
+  display: inline;
+}
+fieldset.symlinks fieldset {
+  width: 45%;
+}
+form fieldset fieldset {
+  float: left;
+}

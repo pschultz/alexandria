@@ -1,0 +1,8 @@
+fieldset.common.rename
+  legend rename file
+  - var filenameParts = renameToFilename.match(/^(.*)\.(.*?)$/);
+  label Rename to
+  input(name="rename",value=filenameParts[1],size=40)
+  .#{filenameParts[2]}
+  input(name="renameExtension",type="hidden",value=filenameParts[2])
+  

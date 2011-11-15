@@ -1,0 +1,53 @@
+!!! 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/jqueryFileTree/jqueryFileTree.css')
+    script(type='text/javascript', src="/javascripts/jquery-1.6.1.min.js")
+
+    script(type='text/javascript', src="/javascripts/sprintf.js")
+
+    script(type='text/javascript', src="/javascripts/config.js")
+    script(type='text/javascript', src="/jqueryFileTree/jqueryFileTree.js")
+    script(type='text/javascript', src="/javascripts/imdb.js")
+    script(type='text/javascript')
+        $(function() {
+            $("#fs-tree").fileTree({
+                root: config.fsRoot,
+                script: '/ls',
+            }, function(path) {
+                //console.log(path);
+                $("#file-info").html("");
+                $("#filename").val(path);
+                
+                $.post('/file', { 'path': path }, function(data) {
+                    $("#file-info").append($("<p>"+data.filetype+"</p>"));
+                    $("form.actions div.actions").html('').load(data.getActionsFrom);
+                    $("form.actions").show();
+                });
+            });
+
+            $("form.actions").live('submit', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              $.post('/videoActions', $(this).serialize());
+              
+              return false;
+            });
+
+            $("input.checkAll").live('click', function(e) {
+              e.stopPropagation();
+
+              if($(this).attr('checked') == 'checked') {
+                $(this).closest('fieldset').find('input:checkbox').add(this).attr('checked', 'checked');
+              }
+              else {
+                $(this).closest('fieldset').find('input:checkbox').add(this).removeAttr('checked');
+              }
+              
+            });
+        });
+  body!= body
+

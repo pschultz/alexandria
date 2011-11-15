@@ -1,0 +1,9 @@
+h1= title
+p Welcome to #{title}
+#fs-tree
+form.actions(method="post")
+    //- (style="display: none")
+    #file-info
+    input#filename(type="hidden",name="filename")
+    .actions
+    input#commit(type="submit")

@@ -1,0 +1,15 @@
+fieldset.video.trailer
+  legend trailer
+
+  p: a(target="_blank",href=data.trailerUrl)= data.trailerUrl
+
+  input(type="hidden",name="trailerUrl",value=data.trailerUrl)
+
+  input(type="radio",name="trailer",value="no",checked="checked")
+  label No trailer
+
+  input(type="radio",name="trailer",value="dowload")
+  label Download trailer
+
+  input(type="radio",name="trailer",value="link")
+  label Link trailer

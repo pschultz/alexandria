@@ -1,0 +1,7 @@
+ul.jqueryFileTree
+    - each dir in dirs
+        li.directory.collapsed: a(rel=base+dir+'/', href='#')= dir
+    - each file in files
+        - var ext = file.replace(/.*\./, '');
+        li(class="file ext_"+ext)
+            a(rel=base+file, href='#')= file
